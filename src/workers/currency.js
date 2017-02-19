@@ -40,7 +40,7 @@ export default class Currency {
 
   sendSocket(socket) {
     const sendCurrency = () => {
-      socket.emit('hw', currency);
+      socket.emit('updateCurrency', currency);
     };
 
     const interval = setInterval(sendCurrency, 3000);
