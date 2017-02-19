@@ -27,17 +27,20 @@ export default class Currency {
 
   startCurrencyWatcher() {
     setInterval(() => {
-      // if (this.clientsCount === 0) return;
+      if (this.clientsCount === 0) return;
 
       processingInterval();
     }, 3000);
   }
 
   sendSocket(socket) {
-    this.clientsCount = socket.server.engine.clientsCount;
+    this.clientsCount += 1;
 
     const interval = setInterval(() => socket.emit('hw', currency), 1000);
-    const disconnect = () => clearInterval(interval);
+    const disconnect = () => {
+      clearInterval(interval);
+      this.clientsCount -= 1;
+    };
 
     socket.on('disconnect', disconnect);
   }

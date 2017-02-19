@@ -7,7 +7,7 @@ const socket = io('/');
 const currency = new CurrencyStore();
 
 socket.on('connect', () => console.log('socket connected'));
-socket.on('hw', (data) => currency.hw = data);
+socket.on('hw', (data) => currency.hw = JSON.stringify(data));
 socket.on('disconnect', function(){});
 
 @observer class Worker extends React.Component {
