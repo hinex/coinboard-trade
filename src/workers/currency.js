@@ -13,22 +13,22 @@ const currency = {
 };
 
 const processingInterval = () => {
-  for (const key in currency) {
+  Object.keys(currency).forEach((key) => {
     parser.getCurrency(key)
       .then(result => (currency[key] = result));
-  }
+  });
+};
+
+const startCurrencyWatcher = () => {
+  setInterval(() => {
+    processingInterval();
+  }, 3000);
 };
 
 export default class Currency {
   constructor() {
     this.clientsCount = 0;
-    this.startCurrencyWatcher();
-  }
-
-  startCurrencyWatcher() {
-    setInterval(() => {
-      processingInterval();
-    }, 3000);
+    startCurrencyWatcher();
   }
 
   sendSocket(socket) {
