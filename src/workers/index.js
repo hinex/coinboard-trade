@@ -1,12 +1,13 @@
 import Currency from '../workers/currency';
 
+const currency = new Currency();
+
 export default class Worker {
   constructor(io) {
     this.io = io;
   }
 
   start() {
-    const currency = new Currency();
     this.io.on('connection', currency.sendSocket);
   }
 }

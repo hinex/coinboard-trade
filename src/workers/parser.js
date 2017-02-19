@@ -3,16 +3,21 @@ import Request from 'request';
 
 const request = Promise.promisify(Request);
 
+const resultTemplate = (name, rate) => ({ name, rate, updated: new Date() });
+
 const btceParser = (data) => {
-  return data.body;
+  const json = JSON.parse(data.body);
+  return resultTemplate('BTC-E', json.btc_eur.avg);
 };
 
 const blockchainParser = (data) => {
-  return data.body;
+  const json = JSON.parse(data.body);
+  return resultTemplate('Blockchain', json.EUR.last);
 };
 
 const coindeskParser = (data) => {
-  return data.body;
+  const json = JSON.parse(data.body);
+  return resultTemplate('CoinDesk', json.bpi.EUR.rate);
 };
 
 
