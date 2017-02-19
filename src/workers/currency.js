@@ -1,4 +1,5 @@
 import Parser from './parser';
+import logger from '../helpers/logger';
 
 const parser = new Parser({
   btce: 'https://btc-e.com/api/3/ticker/btc_eur',
@@ -14,8 +15,15 @@ const currency = {
 
 const processingInterval = () => {
   Object.keys(currency).forEach((key) => {
+    const saveCurrency = (result) => {
+      if (!result && result !== {}) return;
+
+      currency[key] = result;
+    };
+
     parser.getCurrency(key)
-      .then(result => (currency[key] = result));
+      .then(saveCurrency)
+      .catch(err => logger.error(err));
   });
 };
 
@@ -27,13 +35,10 @@ const startCurrencyWatcher = () => {
 
 export default class Currency {
   constructor() {
-    this.clientsCount = 0;
     startCurrencyWatcher();
   }
 
   sendSocket(socket) {
-    this.clientsCount += 1;
-
     const sendCurrency = () => {
       socket.emit('hw', currency);
     };
@@ -42,7 +47,6 @@ export default class Currency {
 
     const disconnect = () => {
       clearInterval(interval);
-      this.clientsCount -= 1;
     };
 
     socket.on('disconnect', disconnect);
