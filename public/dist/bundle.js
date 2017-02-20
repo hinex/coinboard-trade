@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "319bd2f7cfb73241b35d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3e1fd006cef9aaf15561"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31713,6 +31713,7 @@ var setValue = function setValue(event) {
 
 var setCurrency = function setCurrency(event) {
   _currency2.default.current.type = event.target.value;
+  _currency2.default.current.value = event.target.value === 'btc' ? 1 : 1000;
   _currency2.default.updateCurrency = _rate2.default.manualUpdate();
 };
 
@@ -31877,9 +31878,8 @@ var Process = function () {
     key: 'calculate',
     value: function calculate(currency, currentState, vendor) {
       var process = processList[currency];
-      console.log('eeee', this.currency, currency, currentState, vendor.rate);
-      var calculateRate = process(this.currency, currentState, vendor.rate);
-      return parseFloat(calculateRate).toFixed(2);
+      var result = process(this.currency, currentState, vendor.rate);
+      return parseFloat(result).toFixed(2);
     }
   }]);
 

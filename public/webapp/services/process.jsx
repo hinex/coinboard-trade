@@ -14,7 +14,7 @@ const calculateRate = (rate, currency, currentState, data) => {
 
 const usdProcess = (currency, currentState, data) => {
   if (currentState.type === 'usd') {
-    return currentState.value || 1;
+    return currentState.value || 1000;
   }
 
   return calculateRate('usd', currency, currentState, data);
@@ -22,7 +22,7 @@ const usdProcess = (currency, currentState, data) => {
 
 const eurProcess = (currency, currentState, data) => {
   if (currentState.type === 'eur') {
-    return currentState.value || 1;
+    return currentState.value || 1000;
   }
 
   return calculateRate('eur', currency, currentState, data);
