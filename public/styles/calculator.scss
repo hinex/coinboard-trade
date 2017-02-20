@@ -5,6 +5,11 @@ body {
     justify-content: space-around;
     flex-direction: row;
     width: 100%;
-    height: 50%;
+    line-height: 50px;
+
+    .logo {
+      flex: 20;
+      font-size: 30px;
+    }
   }
 }

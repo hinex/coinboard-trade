@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e6404b69d6f517f2d87d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "50af130d5467c3b1c025"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31619,7 +31619,11 @@ socket.on('disconnect', function () {
   return currencyStore.connectedStatus = false;
 });
 socket.on('updateCurrency', function (data) {
-  return currencyStore.updateCurrency = _process2.default.updateCurrency(data);
+  return currencyStore.updateCurrency = _process2.default.updateCurrency(data, currencyStore);
+});
+
+var changeRate = (0, _mobxReact.observer)(function () {
+  return _process2.default.updateCurrentRate(currencyStore.currenct);
 });
 
 var Worker = (0, _mobxReact.observer)(_class = function (_React$Component) {
@@ -31640,32 +31644,26 @@ var Worker = (0, _mobxReact.observer)(_class = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'div',
         _react2.default.createElement(
           'div',
           { className: 'currency' },
           _react2.default.createElement(
             'div',
             { className: 'calculator' },
-            _react2.default.createElement('input', { type: 'number' }),
             _react2.default.createElement(
-              'ul',
-              null,
-              _react2.default.createElement(
-                'li',
-                null,
-                'BTC'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'USD'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'EUR'
-              )
+              'div',
+              { className: 'logo' },
+              'CoinBoard.trade'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'value' },
+              _react2.default.createElement('input', { type: 'number' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'currencies' },
+              _react2.default.createElement('select', { name: '' })
             )
           ),
           _react2.default.createElement(
@@ -31690,7 +31688,7 @@ var Worker = (0, _mobxReact.observer)(_class = function (_React$Component) {
           _react2.default.createElement(
             'span',
             null,
-            'Reconnect...'
+            'Reconnecting...'
           )
         )
       );
@@ -31722,6 +31720,8 @@ var _moment = __webpack_require__(0);
 var _moment2 = _interopRequireDefault(_moment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var currentValue = void 0;
 
 var dateProcess = function dateProcess(date) {
   return (0, _moment2.default)(date).format('MMMM Do YYYY, h:mm:ss a');
@@ -31755,17 +31755,39 @@ var buildRateBlocks = function buildRateBlocks(data) {
         _react2.default.createElement(
           'span',
           { className: 'usd' },
-          usd
+          '1 ',
+          _react2.default.createElement(
+            'span',
+            null,
+            'btc'
+          )
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: 'usd' },
+          usd,
+          ' ',
+          _react2.default.createElement(
+            'span',
+            null,
+            'usd'
+          )
         ),
         _react2.default.createElement(
           'span',
           { className: 'eur' },
-          eur
+          eur,
+          ' ',
+          _react2.default.createElement(
+            'span',
+            null,
+            'eur'
+          )
         )
       ),
       _react2.default.createElement(
         'div',
-        { className: 'data' },
+        { className: 'date' },
         date
       )
     ));
@@ -31778,6 +31800,9 @@ var buildRateBlocks = function buildRateBlocks(data) {
 exports.default = {
   updateCurrency: function updateCurrency(data) {
     return buildRateBlocks(data);
+  },
+  updateCurrentRate: function updateCurrentRate(current) {
+    return currentValue = current;
   }
 };
 
@@ -31793,7 +31818,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _desc, _value, _class, _descriptor, _descriptor2;
+var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3;
 
 var _mobx = __webpack_require__(73);
 
@@ -31848,6 +31873,8 @@ var Currency = (_class = function Currency() {
   _initDefineProp(this, 'connectedStatus', _descriptor, this);
 
   _initDefineProp(this, 'updateCurrency', _descriptor2, this);
+
+  _initDefineProp(this, 'currenct', _descriptor3, this);
 }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'connectedStatus', [_mobx.observable], {
   enumerable: true,
   initializer: function initializer() {
@@ -31857,6 +31884,14 @@ var Currency = (_class = function Currency() {
   enumerable: true,
   initializer: function initializer() {
     return false;
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'currenct', [_mobx.observable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return {
+      type: 'BTC',
+      value: 1
+    };
   }
 })), _class);
 exports.default = Currency;

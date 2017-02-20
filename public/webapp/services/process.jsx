@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
+let currentValue;
+
 const dateProcess = date => moment(date).format('MMMM Do YYYY, h:mm:ss a');
 
 const rateProcess = rate => (parseFloat(rate).toFixed(2));
@@ -19,10 +21,11 @@ const buildRateBlocks = (data) => {
       <div className="block">
         <div className="name">{data[block].name}</div>
         <div className="rates">
-          <span className="usd">{usd}</span>
-          <span className="eur">{eur}</span>
+          <span className="usd">1 <span>btc</span></span>
+          <span className="usd">{usd} <span>usd</span></span>
+          <span className="eur">{eur} <span>eur</span></span>
         </div>
-        <div className="data">{date}</div>
+        <div className="date">{date}</div>
       </div>
     ));
   };
@@ -33,4 +36,5 @@ const buildRateBlocks = (data) => {
 
 export default {
   updateCurrency: data => buildRateBlocks(data),
+  updateCurrentRate: current => (currentValue = current),
 };

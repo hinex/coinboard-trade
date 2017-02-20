@@ -17,7 +17,9 @@ const currencyStore = new CurrencyStore();
 socket.on('connect', () => currencyStore.connectedStatus = true);
 socket.on('reconnect', () => console.log('Reconnecting'));
 socket.on('disconnect', () => currencyStore.connectedStatus = false);
-socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.updateCurrency(data));
+socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.updateCurrency(data, currencyStore));
+
+const changeRate = observer(() => process.updateCurrentRate(currencyStore.currenct))
 
 @observer class Worker extends React.Component {
   render() {
@@ -26,21 +28,17 @@ socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.upd
 
     return (
       <div>
-        div
         <div className="currency">
           <div className="calculator">
-            <input type="number" />
-            <ul>
-              <li>BTC</li>
-              <li>USD</li>
-              <li>EUR</li>
-            </ul>
+            <div className="logo">CoinBoard.trade</div>
+            <div className="value"><input type="number" /></div>
+            <div className="currencies"><select name=""></select></div>
           </div>
           <div className="rates">{ currencyStore.updateCurrency }</div>
         </div>
         <Background />
         <div className={updateCurrency ? 'loader' : 'loader hide'}><span>Loading...</span></div>
-        <div className={connectedStatus ? 'connect' : 'connect hide'}><span>Reconnect...</span></div>
+        <div className={connectedStatus ? 'connect' : 'connect hide'}><span>Reconnecting...</span></div>
       </div>
     )
   }
