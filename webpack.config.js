@@ -1,16 +1,20 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'public/dist');
-const APP_DIR = path.resolve(__dirname, 'public/webapp');
+const PUBLIC_DIR = path.resolve(__dirname, 'public');
 
 const config = {
-  entry: `${APP_DIR}/main.jsx`,
+  context: PUBLIC_DIR,
+  entry: [
+    './webapp/main.jsx',
+    './styles/main.scss',
+  ],
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js',
+    path: PUBLIC_DIR,
+    filename: 'dist/bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.scss', '.css', '.js', '.jsx'],
   },
   module: {
     loaders: [
@@ -24,8 +28,19 @@ const config = {
           plugins: ['transform-decorators-legacy', 'transform-class-properties'],
         },
       },
+      {
+        test: /\.css?$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
+      },
+      {
+        test: /\.scss?$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' }),
+      },
     ],
   },
+  plugins: [
+    new ExtractTextPlugin({ filename: 'dist/style.css', allChunks: true }),
+  ],
 };
 
 module.exports = config;
