@@ -1,8 +1,8 @@
 import React from 'react';
-import CurrencyStore from '../stores/currency';
 import { observer } from 'mobx-react';
 import io from 'socket.io-client';
-import currencyHelper from '../helpers/currency';
+import CurrencyStore from '../stores/currency';
+import process from '../services/process';
 
 const socket = io('/', {
   reconnection: true,
@@ -16,7 +16,7 @@ const currencyStore = new CurrencyStore();
 socket.on('connect', () => currencyStore.connectedStatus = true);
 socket.on('reconnect', () => console.log('Reconnecting'));
 socket.on('disconnect', () => currencyStore.connectedStatus = false);
-socket.on('updateCurrency', (data) => currencyStore.updateCurrency = currencyHelper.processObject(data));
+socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.updateCurrency(data));
 
 @observer class Worker extends React.Component {
   render() {

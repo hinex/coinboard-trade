@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import SocketIO from 'socket.io';
 import config from './config';
 import Worker from './workers';
-import logger from './helpers/logger';
+import logger from './services/logger';
 
 const app = express();
 

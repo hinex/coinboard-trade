@@ -1,5 +1,5 @@
-import Parser from './parser';
-import logger from '../helpers/logger';
+import Parser from '../services/parser';
+import logger from '../services/logger';
 import config from '../config';
 
 const parser = new Parser({
@@ -29,9 +29,7 @@ const processingInterval = () => {
 };
 
 const startCurrencyWatcher = () => {
-  setInterval(() => {
-    processingInterval();
-  }, config.updateInterval);
+  setInterval(processingInterval, config.updateInterval);
 };
 
 startCurrencyWatcher();
@@ -39,4 +37,3 @@ startCurrencyWatcher();
 export default {
   currency,
 };
-
