@@ -31,12 +31,6 @@ const buildRateBlocks = (data) => {
   return blocks;
 };
 
-
-const updateCurrency = (data) => {
-  const buildResponse = buildRateBlocks(data);
-  return <div className="rates">{buildResponse}</div>;
-};
-
 export default {
-  updateCurrency,
+  updateCurrency: data => buildRateBlocks(data),
 };

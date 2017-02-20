@@ -26,7 +26,18 @@ socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.upd
 
     return (
       <div>
-        <div className="currency">{ currencyStore.updateCurrency }</div>
+        div
+        <div className="currency">
+          <div className="calculator">
+            <input type="number" />
+            <ul>
+              <li>BTC</li>
+              <li>USD</li>
+              <li>EUR</li>
+            </ul>
+          </div>
+          <div className="rates">{ currencyStore.updateCurrency }</div>
+        </div>
         <Background />
         <div className={updateCurrency ? 'loader' : 'loader hide'}><span>Loading...</span></div>
         <div className={connectedStatus ? 'connect' : 'connect hide'}><span>Reconnect...</span></div>

@@ -1,6 +1,7 @@
 body {
   .currency {
     display: flex;
+    flex-direction: column;
     position: absolute;
     right: 0;
     bottom: 0;
