@@ -1,74 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
-
-$background: #888888;
-$filterBackground: #000;
-$blurBackground: 20px;
-$opacityBackground: 1;
+@import './variables';
+@import './cover';
+@import './loader';
 
 body {
   background: $background;
   background-size: cover;
   font-family: 'Lato', sans-serif;
 
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
   div#app {
     ul {
       position: relative;
       z-index: 50;
-    }
-  }
-
-  div.loader {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: $filterBackground;
-    transition: opacity 1s ease-out;
-    opacity: 1;
-    z-index: 100;
-
-    span {
-      color: #fff;
-      font-size: 20pt;
-    }
-
-    &.hide {
-      opacity: 0;
-      z-index: 20;
-    }
-  }
-
-  div.cover {
-    position: fixed;
-    z-index: -1;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-
-    -webkit-filter: blur($blurBackground);
-    -moz-filter: blur($blurBackground);
-    -o-filter: blur($blurBackground);
-    -ms-filter: blur($blurBackground);
-    filter: blur($blurBackground);
-
-    background: $filterBackground;
-
-    .cover {
-      position: absolute;
-      opacity: $opacityBackground;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      min-width: 50%;
-      min-height: 50%;
-      overflow-x: hidden;
     }
   }
 }
