@@ -1,0 +1,15 @@
+body {
+  .rates {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+
+    .block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

@@ -17,7 +17,7 @@ const blockchainParser = (data) => {
 
 const coindeskParser = (data) => {
   const json = JSON.parse(data.body);
-  return resultTemplate('CoinDesk.com', json.bpi.USD.rate, json.bpi.EUR.rate);
+  return resultTemplate('CoinDesk.com', json.bpi.USD.rate.replace(',', ''), json.bpi.EUR.rate.replace(',', ''));
 };
 
 

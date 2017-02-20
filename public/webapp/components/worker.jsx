@@ -23,12 +23,13 @@ socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.upd
   render() {
     const updateCurrency = currencyStore.updateCurrency === false;
     const connectedStatus = !currencyStore.connectedStatus && !updateCurrency;
+
     return (
       <div>
         <div className="currency">{ currencyStore.updateCurrency }</div>
         <Background />
         <div className={updateCurrency ? 'loader' : 'loader hide'}><span>Loading...</span></div>
-        <div className={connectedStatus ? 'connect' : 'connect hide'}><span>Connecting...</span></div>
+        <div className={connectedStatus ? 'connect' : 'connect hide'}><span>Reconnect...</span></div>
       </div>
     )
   }
