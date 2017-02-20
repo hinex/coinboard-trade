@@ -41,9 +41,8 @@ export default class Process {
 
   calculate(currency, currentState, vendor) {
     const process = processList[currency];
-    console.log('eeee', this.currency, currency, currentState, vendor.rate);
-    const calculateRate = process(this.currency, currentState, vendor.rate);
-    return parseFloat(calculateRate).toFixed(2);
+    const result = process(this.currency, currentState, vendor.rate);
+    return parseFloat(result).toFixed(2);
   }
 }
 

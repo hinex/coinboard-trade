@@ -23,6 +23,7 @@ const setValue = (event) => {
 
 const setCurrency = (event) => {
   currencyStore.current.type = event.target.value;
+  currencyStore.current.value = event.target.value === 'btc' ? 1 : 1000;
   currencyStore.updateCurrency = rate.manualUpdate();
 };
 
