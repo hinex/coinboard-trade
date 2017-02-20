@@ -2,7 +2,7 @@ import currency from '../workers/currency';
 import config from '../config';
 
 const sendSocket = (socket) => {
-  const sendCurrency = () => (socket.emit('updateCurrency', currency.currency));
+  const sendCurrency = () => (socket.emit('updateCurrency', currency));
 
   const interval = setInterval(sendCurrency, config.updateInterval);
   const disconnect = () => (clearInterval(interval));

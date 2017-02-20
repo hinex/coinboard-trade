@@ -17,8 +17,7 @@ const currency = {
 const processingInterval = () => {
   Object.keys(currency).forEach((key) => {
     const saveCurrency = (result) => {
-      if (!result && result !== {}) return;
-
+      if (!result) return;
       currency[key] = result;
     };
 
@@ -28,12 +27,6 @@ const processingInterval = () => {
   });
 };
 
-const startCurrencyWatcher = () => {
-  setInterval(processingInterval, config.updateInterval);
-};
+setInterval(processingInterval, config.updateInterval);
 
-startCurrencyWatcher();
-
-export default {
-  currency,
-};
+export default currency;
