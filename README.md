@@ -1,6 +1,9 @@
 BTC Currency website - CoinBoard.trade
 ==================================
 
+## Project site
+[CoinBoard.trade](https://coinboard.trade)
+
 ## Install via Docker
 1. Clone repository:<br />
     ```bash
@@ -31,5 +34,3 @@ BTC Currency website - CoinBoard.trade
     export NODE_ENV="development"
     npm run-script dev
     ```
-## Project site
-[CoinBoard.trade](https://coinboard.trade)
