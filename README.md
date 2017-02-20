@@ -16,7 +16,7 @@ docker build -t <your username>/coinboard .
 ```
 Start docker container:<br />
 ```bash
-docker run -p 3000:8080 -d <your username>/node-web-app
+docker run -p 3000:8080 -d <your username>/coinboard
 ```
 
 ## Development mode
