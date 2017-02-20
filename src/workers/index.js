@@ -10,12 +10,4 @@ const sendSocket = (socket) => {
   socket.on('disconnect', disconnect);
 };
 
-export default class Worker {
-  constructor(io) {
-    this.io = io;
-  }
-
-  start() {
-    this.io.on('connection', sendSocket);
-  }
-}
+export default io => io.on('connection', sendSocket);

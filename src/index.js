@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import SocketIO from 'socket.io';
 import config from './config';
-import Worker from './workers';
+import worker from './workers';
 import logger from './services/logger';
 
 const app = express();
@@ -17,8 +17,7 @@ if (!config.isProduction) {
 app.server = http.createServer(app);
 
 const io = new SocketIO(app.server);
-const worker = new Worker(io);
-worker.start();
+worker(io);
 
 app.use(bodyParser.json({
   limit: config.bodyLimit,
