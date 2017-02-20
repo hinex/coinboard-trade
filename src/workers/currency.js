@@ -34,22 +34,9 @@ const startCurrencyWatcher = () => {
   }, config.updateInterval);
 };
 
-export default class Currency {
-  constructor() {
-    startCurrencyWatcher();
-  }
+startCurrencyWatcher();
 
-  sendSocket(socket) {
-    const sendCurrency = () => {
-      socket.emit('updateCurrency', currency);
-    };
+export default {
+  currency,
+};
 
-    const interval = setInterval(sendCurrency, config.updateInterval);
-
-    const disconnect = () => {
-      clearInterval(interval);
-    };
-
-    socket.on('disconnect', disconnect);
-  }
-}
