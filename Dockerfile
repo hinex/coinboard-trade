@@ -1,7 +1,5 @@
 FROM node:boron
 
-ENV NODE_ENV "production"
-
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -14,4 +12,7 @@ RUN npm install
 COPY . /usr/src/app
 
 EXPOSE 8080
+
+ENV NODE_ENV "production"
+
 CMD [ "npm", "start" ]

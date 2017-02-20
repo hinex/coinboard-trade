@@ -58,8 +58,7 @@
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3",
     "webpack": "^2.2.1",
-    "winston": "^2.3.1",
-    "extract-text-webpack-plugin": "^2.0.0-beta"
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -77,6 +76,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "extract-text-webpack-plugin": "^2.0.0-beta",
     "nodemon": "^1.9.2",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1"
