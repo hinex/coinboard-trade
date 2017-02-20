@@ -1,4 +1,6 @@
-$background: #ccc;
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+$background: #888888;
 $filterBackground: #000;
 $blurBackground: 20px;
 $opacityBackground: 1;
@@ -6,8 +8,38 @@ $opacityBackground: 1;
 body {
   background: $background;
   background-size: cover;
+  font-family: 'Lato', sans-serif;
 
   div#app {
+    ul {
+      position: relative;
+      z-index: 50;
+    }
+  }
+
+  div.loader {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: $filterBackground;
+    transition: opacity 1s ease-out;
+    opacity: 1;
+    z-index: 100;
+
+    span {
+      color: #fff;
+      font-size: 20pt;
+    }
+
+    &.hide {
+      opacity: 0;
+      z-index: 20;
+    }
   }
 
   div.cover {

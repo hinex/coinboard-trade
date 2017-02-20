@@ -24,6 +24,7 @@ socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.upd
       <div>
         { currencyStore.updateCurrency }
         <div className="cover"><img src="/images/background.jpeg" className="cover" alt=""/></div>
+        <div className={currencyStore.updateCurrency === false ? 'loader' : 'loader hide'}><span>Loading...</span></div>
       </div>
     )
   }
