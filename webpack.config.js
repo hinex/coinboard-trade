@@ -10,11 +10,11 @@ const config = {
     './styles/main.scss',
   ],
   output: {
-    path: PUBLIC_DIR,
-    filename: 'dist/bundle.js',
+    path: `${PUBLIC_DIR}/dist`,
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.scss', '.css', '.js', '.jsx'],
+    extensions: ['.jpeg', '.scss', '.css', '.js', '.jsx'],
   },
   module: {
     loaders: [
@@ -39,7 +39,7 @@ const config = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'dist/style.css', allChunks: true }),
+    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
   ],
 };
 

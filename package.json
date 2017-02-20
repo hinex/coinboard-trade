@@ -45,6 +45,8 @@
     "body-parser": "^1.16.1",
     "compression": "^1.6.2",
     "express": "^4.14.1",
+    "file": "^0.2.2",
+    "file-loader": "^0.10.0",
     "mobx": "^3.1.0",
     "mobx-react": "^4.1.0",
     "morgan": "^1.8.1",

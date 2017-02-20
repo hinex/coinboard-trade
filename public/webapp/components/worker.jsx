@@ -20,7 +20,12 @@ socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.upd
 
 @observer class Worker extends React.Component {
   render() {
-    return (<div>{ currencyStore.updateCurrency }</div>)
+    return (
+      <div>
+        { currencyStore.updateCurrency }
+        <div className="cover"><img src="/images/background.jpeg" className="cover" alt=""/></div>
+      </div>
+    )
   }
 }
 
