@@ -1,30 +1,77 @@
-@import url(https://fonts.googleapis.com/css?family=Lato);body div.cover {
+@import url(https://fonts.googleapis.com/css?family=Lato);body .background {
   position: fixed;
-  z-index: -1;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  z-index: -100;
   background: #000; }
-  body div.cover .cover {
-    position: absolute;
-    opacity: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    min-width: 50%;
-    min-height: 50%;
-    overflow-x: hidden;
-    -webkit-filter: blur(20px);
-    -moz-filter: blur(20px);
-    -o-filter: blur(20px);
-    -ms-filter: blur(20px);
-    filter: blur(20px); }
+  body .background .video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto; }
+
+body div.connect {
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  z-index: 100; }
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+  body div.connect span {
+    color: #fff;
+    font-size: 20pt;
+    -webkit-animation: flickerAnimation 1s infinite;
+    -moz-animation: flickerAnimation 1s infinite;
+    -o-animation: flickerAnimation 1s infinite;
+    animation: flickerAnimation 1s infinite; }
+  body div.connect.hide {
+    opacity: 0;
+    z-index: 20; }
 
 body div.loader {
-  position: absolute;
+  position: fixed;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,13 +126,26 @@ body div.loader {
     opacity: 0;
     z-index: 20; }
 
+body .currency {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6); }
+
+* {
+  padding: 0;
+  margin: 0; }
+
 body {
-  background: #888888;
-  background-size: cover;
-  font-family: 'Lato', sans-serif; }
-  body * {
-    padding: 0;
-    margin: 0; }
+  background: #000;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  color: #fff; }
   body div#app ul {
     position: relative;
     z-index: 50; }

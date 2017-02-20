@@ -1,6 +1,7 @@
 body {
   div.loader {
-    position: absolute;
+    position: fixed;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;

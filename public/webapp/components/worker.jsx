@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import io from 'socket.io-client';
 import CurrencyStore from '../stores/currency';
 import process from '../services/process';
+import Background from './background';
 
 const socket = io('/', {
   reconnection: true,
@@ -20,11 +21,14 @@ socket.on('updateCurrency', (data) => currencyStore.updateCurrency = process.upd
 
 @observer class Worker extends React.Component {
   render() {
+    const updateCurrency = currencyStore.updateCurrency === false;
+    const connectedStatus = !currencyStore.connectedStatus && !updateCurrency;
     return (
       <div>
-        { currencyStore.updateCurrency }
-        <div className="cover"><img src="/images/background.jpeg" className="cover" alt=""/></div>
-        <div className={currencyStore.updateCurrency === false ? 'loader' : 'loader hide'}><span>Loading...</span></div>
+        <div className="currency">{ currencyStore.updateCurrency }</div>
+        <Background />
+        <div className={updateCurrency ? 'loader' : 'loader hide'}><span>Loading...</span></div>
+        <div className={connectedStatus ? 'connect' : 'connect hide'}><span>Connecting...</span></div>
       </div>
     )
   }

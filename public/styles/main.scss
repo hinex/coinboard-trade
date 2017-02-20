@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import './variables';
-@import './cover';
+@import './background';
+@import './connect';
 @import './loader';
+@import './currency';
+
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
-  background: $background;
-  background-size: cover;
+  background: $filterBackground;
   font-family: 'Lato', sans-serif;
-
-  * {
-    padding: 0;
-    margin: 0;
-  }
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  color: $colorText;
 
   div#app {
     ul {
