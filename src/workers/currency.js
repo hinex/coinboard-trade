@@ -1,10 +1,11 @@
 import Parser from './parser';
 import logger from '../helpers/logger';
+import config from '../config';
 
 const parser = new Parser({
-  btce: 'https://btc-e.com/api/3/ticker/btc_eur',
+  btce: 'https://btc-e.com/api/3/ticker/btc_eur-btc_usd',
   blockchain: 'https://blockchain.info/ticker',
-  coindesk: 'http://api.coindesk.com/v1/bpi/currentprice/EUR.json',
+  coindesk: 'http://api.coindesk.com/v1/bpi/currentprice.json',
 });
 
 const currency = {
@@ -30,7 +31,7 @@ const processingInterval = () => {
 const startCurrencyWatcher = () => {
   setInterval(() => {
     processingInterval();
-  }, 3000);
+  }, config.updateInterval);
 };
 
 export default class Currency {
@@ -43,7 +44,7 @@ export default class Currency {
       socket.emit('updateCurrency', currency);
     };
 
-    const interval = setInterval(sendCurrency, 3000);
+    const interval = setInterval(sendCurrency, config.updateInterval);
 
     const disconnect = () => {
       clearInterval(interval);
