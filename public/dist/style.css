@@ -170,14 +170,55 @@ body .rates {
 
 body .calculator {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
-  line-height: 50px; }
+  line-height: 50px;
+  text-align: center;
+  z-index: 100; }
   body .calculator .logo {
-    flex: 20;
-    font-size: 30px; }
+    font-size: 30px;
+    flex: 1; }
+  body .calculator .value {
+    flex: 1; }
+    body .calculator .value input {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 200;
+      background: none;
+      border: 0;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      width: 100%;
+      line-height: 41px;
+      font-size: 35px;
+      text-align: center;
+      padding: 4px;
+      outline: 0;
+      box-sizing: border-box; }
+  body .calculator .currencies {
+    flex: 1; }
+    body .calculator .currencies input {
+      display: none; }
+    body .calculator .currencies label {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 200;
+      line-height: 49px;
+      font-size: 35px;
+      margin-right: 10px;
+      position: relative; }
+      body .calculator .currencies label::after {
+        content: "/";
+        position: absolute;
+        text-decoration: none;
+        font-size: 25px;
+        right: -11px; }
+      body .calculator .currencies label:last-child {
+        margin-right: 0; }
+        body .calculator .currencies label:last-child::after {
+          display: none; }
+      body .calculator .currencies label.active {
+        border-bottom: 1px solid #ffffff; }
 
 * {
   padding: 0;

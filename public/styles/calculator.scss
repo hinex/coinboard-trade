@@ -1,15 +1,75 @@
 body {
   .calculator {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-around;
     flex-direction: row;
     width: 100%;
     line-height: 50px;
+    text-align: center;
+    z-index: 100;
+
 
     .logo {
-      flex: 20;
       font-size: 30px;
+      flex: 1;
+    }
+
+    .value {
+      flex: 1;
+
+      input {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 200;
+        background: none;
+        border: 0;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        width: 100%;
+        line-height: 41px;
+        font-size: 35px;
+        text-align: center;
+        padding: 4px;
+        outline: 0;
+        box-sizing: border-box;
+      }
+    }
+
+    .currencies {
+      flex: 1;
+
+      input {
+        display: none;
+      }
+
+      label {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 200;
+        line-height: 49px;
+        font-size: 35px;
+        margin-right: 10px;
+        position: relative;
+
+        &::after {
+          content: "/";
+          position: absolute;
+          text-decoration: none;
+          font-size: 25px;
+          right: -11px;
+        }
+
+        &:last-child {
+          margin-right: 0;
+
+          &::after {
+            display: none;
+          }
+        }
+
+        &.active {
+          border-bottom: 1px solid #ffffff;
+        }
+      }
     }
   }
 }

@@ -1,40 +1,49 @@
-import React from 'react';
-import moment from 'moment';
+const btcProcess = (currency, currentState, rate) => {
+  if (currentState.type === 'btc') {
+    return currentState.value || 1;
+  }
 
-let currentValue;
-
-const dateProcess = date => moment(date).format('MMMM Do YYYY, h:mm:ss a');
-
-const rateProcess = rate => (parseFloat(rate).toFixed(2));
-
-const buildRateBlocks = (data) => {
-  const blocks = [];
-
-  const buildBlock = (block) => {
-    if (typeof data[block] === 'undefined') return;
-
-    const date = dateProcess(data[block].updated);
-    const usd = rateProcess(data[block].rate.usd);
-    const eur = rateProcess(data[block].rate.eur);
-
-    blocks.push((
-      <div className="block">
-        <div className="name">{data[block].name}</div>
-        <div className="rates">
-          <span className="usd">1 <span>btc</span></span>
-          <span className="usd">{usd} <span>usd</span></span>
-          <span className="eur">{eur} <span>eur</span></span>
-        </div>
-        <div className="date">{date}</div>
-      </div>
-    ));
-  };
-
-  Object.keys(data).forEach(buildBlock);
-  return blocks;
+  return currentState.value / rate[currentState.type];
 };
 
-export default {
-  updateCurrency: data => buildRateBlocks(data),
-  updateCurrentRate: current => (currentValue = current),
+const calculateRate = (rate, currency, currentState, data) => {
+  const valueRate = data[rate];
+  const btc = btcProcess(currency, currentState, data);
+  return valueRate * btc;
 };
+
+const usdProcess = (currency, currentState, data) => {
+  if (currentState.type === 'usd') {
+    return currentState.value || 1;
+  }
+
+  return calculateRate('usd', currency, currentState, data);
+};
+
+const eurProcess = (currency, currentState, data) => {
+  if (currentState.type === 'eur') {
+    return currentState.value || 1;
+  }
+
+  return calculateRate('eur', currency, currentState, data);
+};
+
+const processList = {
+  btc: btcProcess,
+  usd: usdProcess,
+  eur: eurProcess,
+};
+
+export default class Process {
+  constructor(currency) {
+    this.currency = currency;
+  }
+
+  calculate(currency, currentState, vendor) {
+    const process = processList[currency];
+    console.log('eeee', this.currency, currency, currentState, vendor.rate);
+    const calculateRate = process(this.currency, currentState, vendor.rate);
+    return parseFloat(calculateRate).toFixed(2);
+  }
+}
+

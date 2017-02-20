@@ -1,10 +1,12 @@
 import { observable, computed } from 'mobx';
 
-export default class Currency {
+class Currency {
   @observable connectedStatus = false;
   @observable updateCurrency = false;
-  @observable currenct = {
-    type: 'BTC',
+  @observable current = {
+    type: 'btc',
     value: 1
   };
 }
+
+export default new Currency();
