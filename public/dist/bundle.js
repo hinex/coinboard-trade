@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "183c0f6ac1f66d5234fa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "30b645d2205c363dc72d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31754,7 +31754,7 @@ var Worker = (0, _mobxReact.observer)(_class = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'value' },
-              _react2.default.createElement('input', { type: 'number', onChange: setValue.bind(this), value: _currency2.default.current.value })
+              _react2.default.createElement('input', { type: 'number', onChange: setValue.bind(this), value: _currency2.default.current.value, placeholder: '1', autoFocus: true })
             ),
             _react2.default.createElement(
               'div',
@@ -31832,32 +31832,31 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var btcProcess = function btcProcess(currency, currentState, rate) {
+  var currentStateValue = currentState.value > 0 ? currentState.value : 1;
+
   if (currentState.type === 'btc') {
-    return currentState.value || 1;
+    return currentStateValue;
   }
 
-  return currentState.value / rate[currentState.type];
+  return currentStateValue / rate[currentState.type];
 };
 
 var calculateRate = function calculateRate(rate, currency, currentState, data) {
+  var currentStateValue = currentState.value > 0 ? currentState.value : 1;
+
+  if (currentState.type === rate) {
+    return currentStateValue || 1;
+  }
+
   var valueRate = data[rate];
   var btc = btcProcess(currency, currentState, data);
   return valueRate * btc;
 };
 
 var usdProcess = function usdProcess(currency, currentState, data) {
-  if (currentState.type === 'usd') {
-    return currentState.value || 1;
-  }
-
   return calculateRate('usd', currency, currentState, data);
 };
-
 var eurProcess = function eurProcess(currency, currentState, data) {
-  if (currentState.type === 'eur') {
-    return currentState.value || 1;
-  }
-
   return calculateRate('eur', currency, currentState, data);
 };
 

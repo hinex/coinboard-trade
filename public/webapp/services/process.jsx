@@ -1,32 +1,27 @@
 const btcProcess = (currency, currentState, rate) => {
+  const currentStateValue = currentState.value > 0 ? currentState.value : 1;
+
   if (currentState.type === 'btc') {
-    return currentState.value || 1;
+    return currentStateValue;
   }
 
-  return currentState.value / rate[currentState.type];
+  return currentStateValue / rate[currentState.type];
 };
 
 const calculateRate = (rate, currency, currentState, data) => {
+  const currentStateValue = currentState.value > 0 ? currentState.value : 1;
+
+  if (currentState.type === rate) {
+    return currentStateValue || 1;
+  }
+
   const valueRate = data[rate];
   const btc = btcProcess(currency, currentState, data);
   return valueRate * btc;
 };
 
-const usdProcess = (currency, currentState, data) => {
-  if (currentState.type === 'usd') {
-    return currentState.value || 1;
-  }
-
-  return calculateRate('usd', currency, currentState, data);
-};
-
-const eurProcess = (currency, currentState, data) => {
-  if (currentState.type === 'eur') {
-    return currentState.value || 1;
-  }
-
-  return calculateRate('eur', currency, currentState, data);
-};
+const usdProcess = (currency, currentState, data) => calculateRate('usd', currency, currentState, data);
+const eurProcess = (currency, currentState, data) => calculateRate('eur', currency, currentState, data);
 
 const processList = {
   btc: btcProcess,

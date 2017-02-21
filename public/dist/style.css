@@ -197,7 +197,10 @@ body .calculator {
       text-align: center;
       padding-top: 4px;
       outline: 0;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      -moz-appearance: textfield; }
+      body .calculator .value input::-webkit-outer-spin-button, body .calculator .value input::-webkit-inner-spin-button {
+        -webkit-appearance: none; }
   body .calculator .currencies {
     flex: 1; }
     body .calculator .currencies input {

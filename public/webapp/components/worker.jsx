@@ -41,7 +41,9 @@ const setCurrency = (event) => {
         <div className="currency">
           <div className="calculator">
             <div className="logo">CoinBoard.trade</div>
-            <div className="value"><input type="number" onChange={setValue.bind(this)} value={currencyStore.current.value}/></div>
+            <div className="value">
+              <input type="number" onChange={setValue.bind(this)} value={currencyStore.current.value} placeholder="1" autoFocus />
+            </div>
             <div className="currencies" onChange={setCurrency.bind(this)}>
               <input type="radio" value="btc" name="btc" id="btc"/> <label htmlFor="btc" className={this.activeCurrency('btc')}>BTC</label>
               <input type="radio" value="usd" name="usd" id="usd"/> <label htmlFor="usd" className={this.activeCurrency('usd')}>USD</label>
