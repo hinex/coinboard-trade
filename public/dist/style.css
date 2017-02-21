@@ -136,7 +136,9 @@ body .rates {
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
-  flex: auto; }
+  flex: auto;
+  position: relative;
+  z-index: 100; }
   body .rates .block {
     display: block;
     flex-direction: column;
@@ -193,7 +195,7 @@ body .calculator {
       line-height: 41px;
       font-size: 35px;
       text-align: center;
-      padding: 4px;
+      padding-top: 4px;
       outline: 0;
       box-sizing: border-box; }
   body .calculator .currencies {
@@ -203,16 +205,19 @@ body .calculator {
     body .calculator .currencies label {
       font-family: 'Work Sans', sans-serif;
       font-weight: 200;
-      line-height: 49px;
+      line-height: 43px;
       font-size: 35px;
-      margin-right: 10px;
-      position: relative; }
+      margin-right: 20px;
+      position: relative;
+      display: inline-block;
+      cursor: pointer; }
       body .calculator .currencies label::after {
         content: "/";
         position: absolute;
         text-decoration: none;
         font-size: 25px;
-        right: -11px; }
+        right: -16px;
+        cursor: auto; }
       body .calculator .currencies label:last-child {
         margin-right: 0; }
         body .calculator .currencies label:last-child::after {

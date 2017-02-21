@@ -1,6 +1,6 @@
 {
   "name": "btc-currency",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "BTC Currency checker",
   "main": "dist",
   "scripts": {

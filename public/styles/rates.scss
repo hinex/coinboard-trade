@@ -6,6 +6,8 @@ body {
     flex-direction: row;
     width: 100%;
     flex: auto;
+    position: relative;
+    z-index: 100;
 
     .block {
       display: block;
