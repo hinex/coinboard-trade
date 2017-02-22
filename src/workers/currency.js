@@ -23,7 +23,7 @@ const processingInterval = () => {
 
     parser.getCurrency(key)
       .then(saveCurrency)
-      .catch(err => logger.error(err));
+      .catch(err => logger.debug(err));
   });
 };
 
