@@ -1,6 +1,6 @@
 {
   "name": "btc-currency",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "BTC Currency checker",
   "main": "dist",
   "scripts": {
@@ -37,8 +37,8 @@
       "no-unused-vars": 1
     }
   },
-  "repository": "developit/express-es6-rest-api",
-  "author": "Jason Miller <jason@developit.ca>",
+  "repository": "HiNeX/coinboard-trade",
+  "author": "Roman Hinex <roman@hinex.org>",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.7",
