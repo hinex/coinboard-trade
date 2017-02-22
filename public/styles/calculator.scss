@@ -81,4 +81,14 @@ body {
       }
     }
   }
+
+  @media all and (max-width: 800px){
+    .calculator {
+      flex-direction: column;
+
+      .value {
+        width: 100%;
+      }
+    }
+  }
 }

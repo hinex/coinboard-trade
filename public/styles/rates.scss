@@ -13,7 +13,6 @@ body {
       display: block;
       flex-direction: column;
       justify-content: center;
-      height: 400px;
       width: 100%;
       background: $filterBackgroundOpacity;
 
@@ -48,6 +47,17 @@ body {
         width: 100%;
         text-align: center;
         line-height: 50px;
+      }
+    }
+  }
+
+
+  @media all and (max-width: 800px){
+    .rates {
+      flex-direction: column;
+
+      .block {
+        margin-top: 10px;
       }
     }
   }

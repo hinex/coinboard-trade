@@ -122,12 +122,7 @@ body div.loader {
 body .currency {
   display: flex;
   flex-direction: column;
-  min-height: 600px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  top: 0;
+  min-height: 100vh;
   background: rgba(0, 0, 0, 0.6); }
 
 body .rates {
@@ -143,7 +138,6 @@ body .rates {
     display: block;
     flex-direction: column;
     justify-content: center;
-    height: 400px;
     width: 100%;
     background: rgba(0, 0, 0, 0.6); }
     body .rates .block .name {
@@ -169,6 +163,12 @@ body .rates {
       width: 100%;
       text-align: center;
       line-height: 50px; }
+
+@media all and (max-width: 800px) {
+  body .rates {
+    flex-direction: column; }
+    body .rates .block {
+      margin-top: 10px; } }
 
 body .calculator {
   display: flex;
@@ -227,6 +227,12 @@ body .calculator {
           display: none; }
       body .calculator .currencies label.active {
         border-bottom: 1px solid #ffffff; }
+
+@media all and (max-width: 800px) {
+  body .calculator {
+    flex-direction: column; }
+    body .calculator .value {
+      width: 100%; } }
 
 * {
   padding: 0;
