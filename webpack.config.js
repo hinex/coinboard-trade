@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const WebpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PUBLIC_DIR = path.resolve(__dirname, 'public');
 
 const config = {
@@ -40,6 +41,16 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
+    new WebpackUglifyJsPlugin({
+      compress: { warnings: false },
+      cacheFolder: path.resolve(__dirname, '/cache/uglify'),
+      sourceMap: true,
+      include: /\.min\.js$/,
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.min\.css$/,
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+    }),
   ],
 };
 
