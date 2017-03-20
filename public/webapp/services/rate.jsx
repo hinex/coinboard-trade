@@ -1,10 +1,10 @@
 import React from 'react';
-import moment from 'moment';
+import dateformat from 'dateformat';
 import currencyStore from '../stores/currency';
 import Process from './process';
 
 let cacheData;
-const dateProcess = date => moment(date).format('MMMM Do YYYY, h:mm:ss a');
+const dateProcess = date => dateformat(new Date(date), 'MMMM Do YYYY, h:mm:ss a');
 
 const buildRateBlocks = (data) => {
   cacheData = data;

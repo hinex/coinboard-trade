@@ -6,6 +6,7 @@ import SocketIO from 'socket.io';
 import config from './config';
 import worker from './workers';
 import logger from './services/logger';
+import compression from 'compression';
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(bodyParser.json({
 }));
 
 app.use(express.static('public'));
+app.use(compression());
 app.server.listen(process.env.PORT || config.port);
 
 logger.info(`Started on port ${app.server.address().port}`);

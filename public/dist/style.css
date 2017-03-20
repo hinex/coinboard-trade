@@ -1,1 +1,250 @@
-@import url(https://fonts.googleapis.com/css?family=Lato);@import url(https://fonts.googleapis.com/css?family=Work+Sans:200);body .background{position:fixed;right:0;bottom:0;left:0;top:0;z-index:-100;background:#000}body .background .video{min-width:100%;min-height:100%;width:auto;height:auto}body div.connect{position:fixed;overflow:hidden;bottom:5px;right:5px;transition:opacity 1s ease-out;opacity:1}body div.connect span{color:#fff;font-size:16pt;-webkit-animation:flickerAnimation 1s infinite;-moz-animation:flickerAnimation 1s infinite;-o-animation:flickerAnimation 1s infinite;animation:flickerAnimation 1s infinite}body div.connect.hide{opacity:0;z-index:20}body div.loader{position:fixed;overflow:hidden;display:flex;align-items:center;justify-content:center;top:0;bottom:0;right:0;left:0;background:#000;transition:opacity 1s ease-out;opacity:1;z-index:100}@keyframes flickerAnimation{0%{opacity:1}50%{opacity:.5}to{opacity:1}}@-o-keyframes flickerAnimation{0%{opacity:1}50%{opacity:.5}to{opacity:1}}@-moz-keyframes flickerAnimation{0%{opacity:1}50%{opacity:.5}to{opacity:1}}@-webkit-keyframes flickerAnimation{0%{opacity:1}50%{opacity:.5}to{opacity:1}}body div.loader span{color:#fff;font-size:20pt;-webkit-animation:flickerAnimation 1s infinite;-moz-animation:flickerAnimation 1s infinite;-o-animation:flickerAnimation 1s infinite;animation:flickerAnimation 1s infinite}body div.loader.hide{opacity:0;z-index:20}body .currency{display:flex;flex-direction:column;min-height:100vh;background:rgba(0,0,0,.6)}body .rates{display:flex;align-items:center;justify-content:space-around;flex-direction:row;width:100%;flex:auto;position:relative;z-index:100}body .rates .block{display:block;flex-direction:column;justify-content:center;width:100%;background:rgba(0,0,0,.6)}body .rates .block .name{text-align:center;font-size:20px;font-weight:600;padding:10px;line-height:30px}body .rates .block .rates{font-family:Work Sans,sans-serif;font-weight:200;flex-direction:column;line-height:100px}body .rates .block .rates span{font-size:30px}body .rates .block .rates span span{font-size:20px;text-transform:uppercase}body .rates .block .date{font-family:Work Sans,sans-serif;font-weight:200;opacity:.7;width:100%;text-align:center;line-height:50px}@media (max-width:800px){body .rates{flex-direction:column}body .rates .block{margin-top:10px}}body .calculator{display:flex;align-items:center;justify-content:space-around;flex-direction:row;width:100%;line-height:50px;text-align:center;z-index:100}body .calculator .logo{font-size:30px;flex:1}body .calculator .value{flex:1}body .calculator .value input{font-family:Work Sans,sans-serif;font-weight:200;background:none;border:0;color:#fff;border-bottom:1px solid #fff;width:100%;line-height:41px;font-size:35px;text-align:center;padding-top:4px;outline:0;box-sizing:border-box;-moz-appearance:textfield}body .calculator .value input::-webkit-inner-spin-button,body .calculator .value input::-webkit-outer-spin-button{-webkit-appearance:none}body .calculator .currencies{flex:1}body .calculator .currencies input{display:none}body .calculator .currencies label{font-family:Work Sans,sans-serif;font-weight:200;line-height:43px;font-size:35px;margin-right:20px;position:relative;display:inline-block;cursor:pointer}body .calculator .currencies label:after{content:"/";position:absolute;text-decoration:none;font-size:25px;right:-16px;cursor:auto}body .calculator .currencies label:last-child{margin-right:0}body .calculator .currencies label:last-child:after{display:none}body .calculator .currencies label.active{border-bottom:1px solid #fff}@media (max-width:800px){body .calculator{flex-direction:column}body .calculator .value{width:100%}}*{padding:0;margin:0}body{background:#000;font-family:Lato,sans-serif;height:100%;width:100%;overflow:auto;color:#fff}body div#app ul{position:relative;z-index:50}
+@import url(https://fonts.googleapis.com/css?family=Lato);@import url(https://fonts.googleapis.com/css?family=Work+Sans:200);body .background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  z-index: -100;
+  background: #000; }
+  body .background .video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto; }
+
+body div.connect {
+  position: fixed;
+  overflow: hidden;
+  bottom: 5px;
+  right: 5px;
+  transition: opacity 1s ease-out;
+  opacity: 1; }
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+  body div.connect span {
+    color: #fff;
+    font-size: 16pt;
+    -webkit-animation: flickerAnimation 1s infinite;
+    -moz-animation: flickerAnimation 1s infinite;
+    -o-animation: flickerAnimation 1s infinite;
+    animation: flickerAnimation 1s infinite; }
+  body div.connect.hide {
+    opacity: 0;
+    z-index: 20; }
+
+body div.loader {
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #000;
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  z-index: 100; }
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  100% {
+    opacity: 1; } }
+  body div.loader span {
+    color: #fff;
+    font-size: 20pt;
+    -webkit-animation: flickerAnimation 1s infinite;
+    -moz-animation: flickerAnimation 1s infinite;
+    -o-animation: flickerAnimation 1s infinite;
+    animation: flickerAnimation 1s infinite; }
+  body div.loader.hide {
+    opacity: 0;
+    z-index: 20; }
+
+body .currency {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.6); }
+
+body .rates {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  flex: auto;
+  position: relative;
+  z-index: 100; }
+  body .rates .block {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6); }
+    body .rates .block .name {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 10px;
+      line-height: 30px; }
+    body .rates .block .rates {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 200;
+      flex-direction: column;
+      line-height: 100px; }
+      body .rates .block .rates span {
+        font-size: 30px; }
+        body .rates .block .rates span span {
+          font-size: 20px;
+          text-transform: uppercase; }
+    body .rates .block .date {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 200;
+      opacity: 0.7;
+      width: 100%;
+      text-align: center;
+      line-height: 50px; }
+
+@media all and (max-width: 800px) {
+  body .rates {
+    flex-direction: column; }
+    body .rates .block {
+      margin-top: 10px; } }
+
+body .calculator {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  z-index: 100; }
+  body .calculator .logo {
+    font-size: 30px;
+    flex: 1; }
+  body .calculator .value {
+    flex: 1; }
+    body .calculator .value input {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 200;
+      background: none;
+      border: 0;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      width: 100%;
+      line-height: 41px;
+      font-size: 35px;
+      text-align: center;
+      padding-top: 4px;
+      outline: 0;
+      box-sizing: border-box;
+      -moz-appearance: textfield; }
+      body .calculator .value input::-webkit-outer-spin-button, body .calculator .value input::-webkit-inner-spin-button {
+        -webkit-appearance: none; }
+  body .calculator .currencies {
+    flex: 1; }
+    body .calculator .currencies input {
+      display: none; }
+    body .calculator .currencies label {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 200;
+      line-height: 43px;
+      font-size: 35px;
+      margin-right: 20px;
+      position: relative;
+      display: inline-block;
+      cursor: pointer; }
+      body .calculator .currencies label::after {
+        content: "/";
+        position: absolute;
+        text-decoration: none;
+        font-size: 25px;
+        right: -16px;
+        cursor: auto; }
+      body .calculator .currencies label:last-child {
+        margin-right: 0; }
+        body .calculator .currencies label:last-child::after {
+          display: none; }
+      body .calculator .currencies label.active {
+        border-bottom: 1px solid #ffffff; }
+
+@media all and (max-width: 800px) {
+  body .calculator {
+    flex-direction: column; }
+    body .calculator .value {
+      width: 100%; } }
+
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: #000;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  color: #fff; }
+  body div#app ul {
+    position: relative;
+    z-index: 50; }

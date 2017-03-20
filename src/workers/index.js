@@ -10,4 +10,4 @@ const sendSocket = (socket) => {
   socket.on('disconnect', disconnect);
 };
 
-export default io => io.on('connection', sendSocket);
+export default (io) => io.on('connection', sendSocket);
