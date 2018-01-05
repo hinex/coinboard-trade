@@ -1,15 +1,13 @@
-import Parser from '../services/parser';
-import logger from '../services/logger';
-import config from '../config';
+const Parser = require('../services/parser');
+const logger = require('../services/logger');
+const config = require('../config');
 
 const parser = new Parser({
-  btce: 'https://btc-e.com/api/3/ticker/btc_eur-btc_usd',
   blockchain: 'https://blockchain.info/ticker',
   coindesk: 'http://api.coindesk.com/v1/bpi/currentprice.json',
 });
 
 const currency = {
-  btce: {},
   blockchain: {},
   coindesk: {},
 };
@@ -23,10 +21,10 @@ const processingInterval = () => {
 
     parser.getCurrency(key)
       .then(saveCurrency)
-      .catch((err) => logger.debug(err));
+      .catch(err => logger.debug(err));
   });
 };
 
 setInterval(processingInterval, config.updateInterval);
 
-export default currency;
+module.exports = currency;

@@ -5,4 +5,4 @@ const configuration = {
   updateInterval: 5000,
 };
 
-export default configuration;
+module.exports = configuration;

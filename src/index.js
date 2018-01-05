@@ -1,14 +1,14 @@
-import http from 'http';
-import express from 'express';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import SocketIO from 'socket.io';
-import config from './config';
-import worker from './workers';
-import logger from './services/logger';
-import compression from 'compression';
-
+const http = require('http');
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const SocketIO = require('socket.io');
+const config = require('./config');
+const worker = require('./workers');
+const logger = require('./services/logger');
+const compression = require('compression');
 const app = express();
+const io = new SocketIO(app.server);
 
 if (!config.isProduction) {
   logger.level = 'debug';
@@ -17,7 +17,6 @@ if (!config.isProduction) {
 
 app.server = http.createServer(app);
 
-const io = new SocketIO(app.server);
 worker(io);
 
 app.use(bodyParser.json({
@@ -29,4 +28,4 @@ app.use(compression());
 app.server.listen(process.env.PORT || config.port);
 
 logger.info(`Started on port ${app.server.address().port}`);
-export default app;
+module.exports = app;

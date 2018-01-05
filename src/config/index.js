@@ -1,4 +1,4 @@
-import production from './production';
-import development from './development';
+const production = require('./production');
+const development = require('./development');
 
-export default process.env.NODE_ENV === 'production' ? production : development;
+module.exports = process.env.NODE_ENV === 'production' ? production : development;

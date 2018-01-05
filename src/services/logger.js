@@ -1,4 +1,4 @@
-import { Logger, transports } from 'winston';
+const { Logger, transports } = require('winston');
 
 const config = {
   transports: [
@@ -6,4 +6,4 @@ const config = {
   ],
 };
 
-export default new Logger(config);
+module.exports = new Logger(config);

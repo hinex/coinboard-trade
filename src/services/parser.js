@@ -1,14 +1,9 @@
-import Promise from 'bluebird';
-import Request from 'request';
+const Promise = require('bluebird');
+const Request = require('request');
 
 const request = Promise.promisify(Request);
 
 const resultTemplate = (name, usd, eur) => ({ name, rate: { usd, eur }, updated: new Date() });
-
-const btceParser = (data) => {
-  const json = JSON.parse(data.body);
-  return resultTemplate('btc-e.com', json.btc_usd.avg, json.btc_eur.avg);
-};
 
 const blockchainParser = (data) => {
   const json = JSON.parse(data.body);
@@ -22,13 +17,11 @@ const coindeskParser = (data) => {
 
 
 const parsers = {
-  btce: btceParser,
   blockchain: blockchainParser,
   coindesk: coindeskParser,
 };
 
-
-export default class Parser {
+module.exports = class Parser {
   constructor(api) {
     this.api = api;
   }
@@ -41,4 +34,4 @@ export default class Parser {
   getCurrency(key) {
     return this.getData(key);
   }
-}
+};

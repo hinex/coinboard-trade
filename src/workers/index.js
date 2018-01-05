@@ -1,5 +1,5 @@
-import currency from '../workers/currency';
-import config from '../config';
+const currency = require('../workers/currency');
+const config = require('../config');
 
 const sendSocket = (socket) => {
   const sendCurrency = () => (socket.emit('updateCurrency', currency));
@@ -10,4 +10,4 @@ const sendSocket = (socket) => {
   socket.on('disconnect', disconnect);
 };
 
-export default (io) => io.on('connection', sendSocket);
+module.exports = (io) => io.on('connection', sendSocket);
