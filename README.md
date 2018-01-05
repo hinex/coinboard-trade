@@ -1,5 +1,4 @@
-BTC Currency website - CoinBoard.trade
-==================================
+# [PROJECT MOVED TO NEW REPOSITORY](https://github.com/hardskilled/coinboard-trade)
 
 ## Project site
 [CoinBoard.trade](https://coinboard.trade)
